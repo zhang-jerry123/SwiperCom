@@ -75,9 +75,16 @@ export default {
     },
     created(){
             this.setTransition()
-            this.onSlide()
-            
+            this.onSlide() 
+    },
+    watch:{
+        direction(val){
+            this.direction = val,
+            this.dir = this.direction
+            this.setTransition()
+        }
     }
+    
 }
 </script>
 
@@ -149,6 +156,27 @@ export default {
             }
             &-leave-to{
                 transform: translateY(100%);
+            }
+        }
+
+        &_up{
+            &-enter{
+                transform:translateY(0);
+            }
+            &-enter-active{
+                transition:all 1s;
+            }
+            &-enter-to{
+                transform: translateY(-100%);
+            }
+            &-leave{
+                transform: translateY(0);
+            }
+            &-leave-active{
+                transition: all 1s;
+            }
+            &-leave-to{
+                transform: translateY(-100%);
             }
         }
     }
